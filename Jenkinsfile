@@ -28,7 +28,7 @@ pipeline {
         stage('Docker Build Images') {
             steps {
                 script {
-                    sh 'docker build -t dockerhub1010/helm-rockets:v1 .'
+                    sh 'docker build -t vj1805/helm-rockets:v1 .'
                     sh 'docker images'
                 }
             }
@@ -37,8 +37,8 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
-                        sh "docker login -u dockerhub1010 -p ${dockerPassword}"
-                        sh 'docker push dockerhub1010/helm-rockets:v1'
+                        sh "docker login -u vj1805 -p ${dockerPassword}"
+                        sh 'docker push vj1805/helm-rockets:v1'
                     }
                 }
             }
@@ -46,7 +46,7 @@ pipeline {
         stage('Trivy Docker-scan') {
             steps {
                 script {
-                    sh 'trivy image dockerhub1010/helm-rockets:v1 > /home/ubuntu/scan.txt' 
+                    sh 'trivy image vj1805/helm-rockets:v1 > /home/ubuntu/scan.txt' 
                 }
             }
         }
