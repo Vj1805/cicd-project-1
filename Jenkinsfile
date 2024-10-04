@@ -4,7 +4,7 @@ pipeline {
         stage ('SCM checkout') {
             steps {
                 script{
-                     git url: 'https://github.com/pavangit-lab/ecs-proj.git'
+                     git url: 'https://github.com/Vj1805/cicd-project-1.git'
                 }
             }
         }
